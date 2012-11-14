@@ -11,7 +11,7 @@ module SlideCollector
       end
 
       def html
-        @html ||= Nokogiri::HTML(open(@url))
+        @html ||= AGENT.get(@url)
       end
 
       def download_url

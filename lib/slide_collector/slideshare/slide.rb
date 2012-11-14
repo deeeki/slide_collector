@@ -24,24 +24,24 @@ module SlideCollector
         Time.parse(@slide.created)
       end
 
+      def filename
+        title.gsub(/ |\//, '_').gsub(/&rsquo;/, "'")
+      end
+
       def html
-        @html ||= Nokogiri::HTML(open(@url))
+        @html ||= AGENT.get(@url)
       end
 
       def count
-        @count ||= html.at_css('#embed-customize-slidenumber').children.count
+        @count ||= html.at('#embed-customize-slidenumber').children.count
       end
 
       def image_dir
-        @image_dir ||= File.dirname(html.xpath("//meta[@name='og_image']").attr('content').value)
+        @image_dir ||= File.dirname(html.at('//meta[@name="og_image"]')['content'])
       end
 
       def images
         1.upto(count).map{|seq| "#{image_dir}/slide-#{seq}-1024.jpg" }
-      end
-
-      def filename
-        title.gsub(/ |\//, '_').gsub(/&rsquo;/, "'")
       end
 
       def save file

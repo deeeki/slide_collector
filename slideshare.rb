@@ -41,7 +41,7 @@ if $0 == __FILE__
     $stderr.puts parser.help
     exit 1
   else
-    downloader = SlideCollector::Slideshare::Downloader.new
+    downloader = SlideCollector::Slideshare::Downloader.new(opt)
     downloader.process
   end
 end

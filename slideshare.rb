@@ -12,10 +12,10 @@ require 'slide_collector'
 
 Dir.mkdir('log') unless File.directory?('log')
 
+#TODO need to make clear setting config values
 config ||= YAML.load_file './config/slideshare.yml'
 API_KEY = config['api_key']
 SECRET_KEY = config['secret_key']
-
 module SlideCollector
   module Slideshare
     API = ::Slideshare::API.new(API_KEY, SECRET_KEY)
@@ -27,7 +27,7 @@ if $0 == __FILE__
   parser = OptionParser.new
   opt = {}
   parser.banner = "Usage: #{File.basename($0)} options"
-  parser.on('-d DIR', '--dir DIR', 'Directory path name to save image.') {|d| opt[:dir] = d }
+  parser.on('-d DIR', '--dir DIR', 'Directory path name to save slide.') {|d| opt[:dir] = d }
   parser.on('-o OFFSET', '--offset OFFSET', 'Offset to check from entry list.') {|o| opt[:offset] = o }
   parser.on('-h', '--help', 'Prints this message and quit') {
     puts parser.help

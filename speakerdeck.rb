@@ -1,7 +1,6 @@
 # coding: utf-8
 require 'bundler/setup'
 Bundler.require(:default) if defined?(Bundler)
-require 'pp'
 
 $:.unshift(File.dirname(__FILE__) << '/lib')
 require 'slide_collector/speakerdeck/downloader'
@@ -17,7 +16,7 @@ if $0 == __FILE__
   parser = OptionParser.new
   opt = {}
   parser.banner = "Usage: #{File.basename($0)} options"
-  parser.on('-d DIR', '--dir DIR', 'Directory path name to save image.') {|d| opt[:dir] = d }
+  parser.on('-d DIR', '--dir DIR', 'Directory path name to save slide.') {|d| opt[:dir] = d }
   parser.on('-o OFFSET', '--offset OFFSET', 'Offset to check from entry list.') {|o| opt[:offset] = o }
   parser.on('-h', '--help', 'Prints this message and quit') {
     puts parser.help

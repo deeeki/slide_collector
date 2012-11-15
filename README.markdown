@@ -14,6 +14,12 @@ please try with your own responsibility.
     cd slide_collector
     bundle install
 
+### Setting
+
+- to use SlideShare API, you need to apply on http://www.slideshare.net/developers/applyforapi
+- then, set API keys to `config/slideshare.yml`
+ - refer to `config/slideshare.yml.sample`
+
 ## Usage
 
 ### Normal

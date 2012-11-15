@@ -23,7 +23,7 @@ module SlideCollector
     end
 
     def add log
-      File.open(@path, 'a'){|f| f.puts log }
+      File.open(@path, 'a'){|f| f.puts "#{Time.now}\n#{log}\n\n" }
     end
   end
 end

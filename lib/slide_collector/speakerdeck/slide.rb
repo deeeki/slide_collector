@@ -7,6 +7,7 @@ module SlideCollector
 
       def initialize url
         raise 'not slide' unless url =~ /speakerdeck.com\/(u\/)?[^\/]{2,}\/(p\/)?[^\/]+$/
+        raise 'not slide' if url =~ /speakerdeck.com\/embed\//
         @url = url
       end
 
@@ -28,7 +29,7 @@ module SlideCollector
 
       def save file
         open(file, 'wb') do |f|
-          open(download_url.gsub(' ', '%20')) do |data|
+          open(URI.encode(download_url)) do |data|
             f.write(data.read)
           end
         end

@@ -14,12 +14,16 @@ module SlideCollector
         @html ||= AGENT.get(@url)
       end
 
+      def title
+        @title ||= html.title.sub(' // Speaker Deck', '')
+      end
+
       def download_url
         @download_url ||= html.at('a#share_pdf')['href']
       end
 
       def filename
-        File.basename(download_url, '.*').gsub(/ |\//, '_')
+        title.gsub(/ |\//, '_')
       end
 
       def save file

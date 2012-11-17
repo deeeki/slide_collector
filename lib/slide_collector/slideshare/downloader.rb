@@ -27,7 +27,8 @@ module SlideCollector
         begin
           begin
             slide = Slide.new entry.url
-          rescue ::Slideshare::APIError
+          rescue ::Slideshare::APIError => e
+            raise e if e.message == 'Account Exceeded Daily Limit'
             entry = entry_list.prev_and_get
             next
           end

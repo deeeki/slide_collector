@@ -18,7 +18,7 @@ module SlideCollector
       def fetch
         url = "#{BASE_URL}?sort=eid&url=#{CGI.escape(@url)}&of=#{@offset}"
         @page = AGENT.get(url)
-        list = @page.search('li.track-click-entry').map do |e|
+        list = @page.search('li.entry-unit').map do |e|
           OpenStruct.new({
             eid: e['data-eid'].to_i,
             entryrank: e['data-entryrank'].to_i,

@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'activesupport'
 gem 'mechanize'
 gem 'prawn'
+gem 'slideshare', github: 'itzki/slideshare'
+gem 'dotenv'

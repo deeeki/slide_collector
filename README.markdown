@@ -17,8 +17,8 @@ please try with your own responsibility.
 ### Setting
 
 - to use SlideShare API, you need to apply on http://www.slideshare.net/developers/applyforapi
-- then, set API keys to `config/slideshare.yml`
- - refer to `config/slideshare.yml.sample`
+- then, set your keys to `SLIDESHARE_API_KEY` and `SLIDESHARE_SHARED_SECRET` environment variables
+ - easy to use [dotenv](https://github.com/bkeepers/dotenv)
 
 ## Usage
 

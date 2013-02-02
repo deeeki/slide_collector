@@ -5,7 +5,7 @@ module SlideCollector
     class Slide
       def initialize url
         @url = url
-        @slide = API.get_slideshow(:slideshow_url => url).slideshow
+        @slide = ::Slideshare.get_slideshow(:slideshow_url => url).slideshow
       end
 
       def method_missing(name, *args)

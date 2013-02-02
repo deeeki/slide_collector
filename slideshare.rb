@@ -2,8 +2,10 @@
 require 'bundler/setup'
 Bundler.require(:default) if defined?(Bundler)
 
+Dotenv.load
+Slideshare.setup
+
 $:.unshift(File.dirname(__FILE__) << '/lib')
-require 'slideshare/api'
 require 'slide_collector/slideshare/downloader'
 require 'slide_collector/slideshare/slide'
 require 'slide_collector/hateb/entry_list'
@@ -11,16 +13,6 @@ require 'slide_collector/log'
 require 'slide_collector'
 
 Dir.mkdir('log') unless File.directory?('log')
-
-#TODO need to make clear setting config values
-config ||= YAML.load_file './config/slideshare.yml'
-API_KEY = config['api_key']
-SECRET_KEY = config['secret_key']
-module SlideCollector
-  module Slideshare
-    API = ::Slideshare::API.new(API_KEY, SECRET_KEY)
-  end
-end
 
 if $0 == __FILE__
   require 'optparse'

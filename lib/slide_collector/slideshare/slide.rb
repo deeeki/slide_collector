@@ -25,7 +25,7 @@ module SlideCollector
       end
 
       def filename
-        title.gsub(/[!-,\/:-@\[-^`{-~]/, '_').gsub(/&rsquo;/, "'")
+        title.gsub(/[ -,\/:-@\[-^`{-~]/, '_').gsub(/&rsquo;/, "'")
       end
 
       def html

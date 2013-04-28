@@ -5,7 +5,7 @@ module SlideCollector
     class Slide
       def initialize url
         @url = url
-        @slide = ::Slideshare.get_slideshow(:slideshow_url => url).slideshow
+        @slide = ::Slideshare.get_slideshow(:slideshow_url => url, detailed: 1).slideshow
       end
 
       def method_missing(name, *args)
@@ -33,7 +33,7 @@ module SlideCollector
       end
 
       def count
-        @count ||= html.at('#embed-customize-slidenumber').children.count
+        @slide.num_slides.to_i
       end
 
       def image_dir

@@ -36,12 +36,8 @@ module SlideCollector
         @slide.num_slides.to_i
       end
 
-      def image_dir
-        @image_dir ||= File.dirname(html.at('//meta[@name="og_image"]')['content'])
-      end
-
       def images
-        1.upto(count).map{|seq| "#{image_dir}/slide-#{seq}-1024.jpg" }
+        html.search('.slide_image').map{|img| img['data-normal'].to_s.sub(/-728\.jpg.*\Z/, '-1024.jpg') }
       end
 
       def save file
